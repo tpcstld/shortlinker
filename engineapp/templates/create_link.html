@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Shortlink Creator</title>
+		<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='create_link.css') }}"> -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='foundation.min.css') }}">
+	</head>
+	<body>
+		<div class="row">
+			<div class="small-12 columns text-center">
+				<h1>Shortlink Creator</h1>
+			</div>
+		</div>
+	
+	    <form name="shortlink-form">
+			<div id="url-input" class="row">
+				<div class="small-12 small-centered medium-8 columns">
+					<input placeholder="Insert URL" type="text" name="url" autofocus>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-4 small-centered columns text-center">
+					<button id="submit-button" onclick="return handleSubmit();">Generate</button>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+		    <div class="small-12 small-centered medium-8 columns">
+				<div id="shortlink-link" class="callout panel" style="display:none;"></div>
+			</div>
+		</div>
+		
+		<script src="{{ url_for('static', filename='jquery-2.1.1.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='foundation.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='create_link.js') }}"></script>
+	</body>
+</html>

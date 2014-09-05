@@ -1,15 +1,19 @@
 from flask import Flask
+from flask import render_template
 app = Flask(__name__)
-app.config['DEBUG'] = True
+app.debug = True
 
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
 
 @app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'LOL HIHI!'
+def create_link():
+    return render_template('create_link.html')
+
+@app.route('/generate_link', methods=['GET', 'POST']t)
+def generate_link():
+    return "Hello, World!"
 
 
 @app.errorhandler(404)
