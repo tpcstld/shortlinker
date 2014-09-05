@@ -1,5 +1,8 @@
 from flask import Flask
 from flask import render_template
+from flask import request
+from flask import redirect
+from link_provider import ShortLink
 app = Flask(__name__)
 app.debug = True
 
@@ -11,9 +14,16 @@ app.debug = True
 def create_link():
     return render_template('create_link.html')
 
-@app.route('/generate_link', methods=['GET', 'POST']t)
+@app.route('/generate_link', methods=['GET', 'POST'])
 def generate_link():
-    return "Hello, World!"
+    url = request.form['url']
+    link = ShortLink.generate_link(url)
+    return link
+
+@app.route('/<shorturl>')
+def redirect_link(shorturl):
+    link = ShortLink.get_link(shorturl)
+    return redirect(link, code=302)
 
 
 @app.errorhandler(404)
