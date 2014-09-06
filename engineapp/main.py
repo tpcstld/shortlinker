@@ -18,7 +18,7 @@ def create_link():
 def generate_link():
     url = request.form['url']
     link = ShortLink.generate_link(url)
-    return link
+    return '<a href="' + link + '">' + link + '</a>'
 
 @app.route('/<shorturl>')
 def redirect_link(shorturl):
