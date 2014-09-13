@@ -17,6 +17,8 @@ def create_link():
 @app.route('/generate_link', methods=['GET', 'POST'])
 def generate_link():
     url = request.form['url']
+    if url == "" or url.isspace():
+        return "Please enter a URL"
     link = ShortLink.generate_link(url)
     return '<a href="' + link + '">' + link + '</a>'
 
