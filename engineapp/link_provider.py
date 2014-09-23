@@ -36,7 +36,10 @@ class ShortLink(ndb.Model):
 
     @classmethod
     def get_link(self, key):
-        id = base58.decode(key)
+        try:
+            id = base58.decode(key)
+        except:
+            return ""
         instance = self.get_by_id(id)
         if instance is None:
             return ""
