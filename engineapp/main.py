@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from link_provider import ShortLink
+import logging
 app = Flask(__name__)
 app.debug = True
 
@@ -25,6 +26,7 @@ def generate_link():
 @app.route('/<shorturl>')
 def redirect_link(shorturl):
     link = ShortLink.get_link(shorturl)
+    logging.info("Incoming IP address: " + request.remote_addr)
     return redirect(link, code=302)
 
 
