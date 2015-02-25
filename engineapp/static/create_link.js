@@ -3,8 +3,8 @@ function handleSubmit() {
     button.innerHTML = "Processing...";
     button.disabled = true;
     document.getElementById( "shortlink-link" ).style.display = "none";
-	
-	createShortlink();
+
+    createShortlink();
 }
 
 function createShortlink() {
@@ -22,7 +22,7 @@ function createShortlink() {
             if ( errorThrown == "Bad Request" ) {
                 downloadMessage.innerHTML = jqXHR.responseText;
             } else {
-                downloadMessage.innerHTML = "<b>An internal error has occured!</b>"
+                downloadMessage.innerHTML = "<b>An internal error has occured!</b>";
             }
             downloadMessage.classList.toggle( "error", true );
         },
