@@ -24,14 +24,14 @@ class ShortLink(ndb.Model):
         if not ( url.startswith('http') or url.startswith('//') ):
             url = '//' + url
         return url
-    
+
     @classmethod
     def generate_link(self, url):
         url = self._clean_url(url)
         link = self.check_existing_link(url)
         if link is None:
             link = self.create_new_link(url)
-            
+
         return request.host_url + base58.encode(link.integer_id())
 
     @classmethod
@@ -44,4 +44,4 @@ class ShortLink(ndb.Model):
         if instance is None:
             return ""
         return instance.link
-        
+
